@@ -37,7 +37,6 @@ export async function fetchEvents(): Promise<CalendarEvent[]> {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log('Raw API response:', data); // 生のAPIレスポンスをコンソールに表示
     return data.items as CalendarEvent[];
   } catch (error) {
     console.error('Error fetching events:', error);

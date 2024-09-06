@@ -12,7 +12,6 @@ const Schedule: Component = () => {
   createEffect(() => {
     fetchEvents().then((fetchedEvents) => {
       setEvents(fetchedEvents);
-      console.log('Fetched events:', fetchedEvents); // コンソールに取得したイベントを表示
     });
   });
 
