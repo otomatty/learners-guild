@@ -1,7 +1,7 @@
-import { styled } from 'solid-styled-components';
+import { styled } from "solid-styled-components";
 
-export const ScheduleWrapper = styled('section')`
-  margin-top: 2rem;
+export const ScheduleWrapper = styled("section")`
+  width: calc(50% - 1rem);
 
   h2 {
     color: #333;
@@ -31,8 +31,8 @@ export const ScheduleWrapper = styled('section')`
   }
 `;
 
-export const EventCard = styled('div')`
-  background-color: #f8f8f8;
+export const EventCard = styled("div")`
+  background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;

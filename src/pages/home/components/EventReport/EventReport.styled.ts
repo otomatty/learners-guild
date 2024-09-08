@@ -1,8 +1,10 @@
-import { styled } from 'solid-styled-components';
+import { styled } from "solid-styled-components";
 
-export const EventReportWrapper = styled('section')`
+export const EventReportWrapper = styled("section")`
   margin-top: 2rem;
-
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
   h2 {
     color: #333;
     font-size: 1.8rem;
@@ -16,16 +18,10 @@ export const EventReportWrapper = styled('section')`
   }
 
   .report-item {
-    background-color: #f8f8f8;
+    background-color: #fff;
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-    h3 {
-      color: #444;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
 
     p {
       color: #666;

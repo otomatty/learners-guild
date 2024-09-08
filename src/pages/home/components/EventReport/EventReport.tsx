@@ -1,10 +1,11 @@
-import { Component } from 'solid-js';
-import { EventReportWrapper } from './EventReport.styled';
+import { Component } from "solid-js";
+import { EventReportWrapper } from "./EventReport.styled";
+import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 
 const EventReport: Component = () => {
   return (
     <EventReportWrapper>
-      <h2>イベントレポート</h2>
+      <SectionTitle title="今までのもくもく会" />
       <div class="report-list">
         <div class="report-item">
           <h3>2024年3月のもくもく会</h3>

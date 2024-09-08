@@ -1,36 +1,62 @@
-import { Component, createSignal, createEffect } from 'solid-js';
-import { ScheduleWrapper, EventCard } from './Schedule.styled';
+import { Component, createSignal, createEffect } from "solid-js";
+import { ScheduleWrapper, EventCard } from "./Schedule.styled";
 import {
   CalendarEvent,
-  getEventImage,
-  fetchEvents,
-} from '../../../../utils/googleCalendar';
+  getLocationImage, // getLocationImageをインポート
+  fetchNextEvent, // fetchNextEventをインポート
+  getLocationName, // getLocationNameをインポート
+  formatTimeRange, // formatTimeRangeをインポート
+} from "../../../../utils/googleCalendar";
+import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 
 const Schedule: Component = () => {
-  const [events, setEvents] = createSignal<CalendarEvent[]>([]);
+  const [event, setEvent] = createSignal<CalendarEvent | null>(null);
 
   createEffect(() => {
-    fetchEvents().then((fetchedEvents) => {
-      setEvents(fetchedEvents);
+    fetchNextEvent().then((fetchedEvent) => {
+      setEvent(fetchedEvent);
     });
   });
 
   return (
     <ScheduleWrapper>
-      <h2>開催スケジュール</h2>
-      <p>もくもく会は毎週火曜日と土曜日に開催されています。</p>
+      <SectionTitle title="次回のもくもく会" />
       <div class="event-list">
-        {events().map((event) => (
+        {event() ? (
           <EventCard>
-            <img src={getEventImage(event.summary)} alt={event.summary} />
-            <h3>{event.summary}</h3>
-            <p>日時: {new Date(event.start.dateTime).toLocaleString()}</p>
-            <p>場所: {event.location || 'オンライン'}</p>
+            <img
+              src={getLocationImage(event()!.location || "")}
+              alt={event()!.summary}
+            />
+            <h3>{event()!.summary}</h3>
+            <p>
+              開催日: {new Date(event()!.start.dateTime).toLocaleDateString()}
+            </p>
+            <p>
+              時間:{" "}
+              {formatTimeRange(event()!.start.dateTime, event()!.end.dateTime)}
+            </p>
+            <p>
+              場所:{" "}
+              {event()!.location ? (
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event()!.location || "")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {getLocationName(event()!.location || "")}
+                </a>
+              ) : (
+                "未定"
+              )}
+            </p>
           </EventCard>
-        ))}
+        ) : (
+          <p>次のイベントはありません。</p>
+        )}
       </div>
       <p>
-        詳細なスケジュールは<a href="/schedule">スケジュールページ</a>
+        詳しい開催情報は<a href="/schedule">スケジュールページ</a>
         をご覧ください。
       </p>
     </ScheduleWrapper>
