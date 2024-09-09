@@ -1,104 +1,74 @@
-import {
-  FaBrandsSquareJs,
-  FaBrandsPython,
-  FaBrandsJava,
-  FaSolidCode,
-  FaSolidBook,
-  FaSolidPaintbrush,
-  FaSolidGlobe,
-  FaSolidChartLine,
-  FaSolidClock,
-  FaSolidComments,
-  FaSolidGraduationCap,
-  FaSolidLightbulb,
-  FaSolidLock,
-  FaSolidRocket,
-  FaSolidSchool,
-  FaSolidUserTie,
-  FaSolidAtom,
-  FaSolidChalkboardUser,
-  FaSolidComment,
-} from 'solid-icons/fa';
-import { AiFillProject, AiFillAccountBook } from 'solid-icons/ai';
-import { ImBook, ImUsers } from 'solid-icons/im';
-import {
-  BiSolidCameraMovie,
-  BiSolidSlideshow,
-  BiRegularMath,
-} from 'solid-icons/bi';
-import { SiRuby, SiCplusplus } from 'solid-icons/si';
-
 export interface Theme {
   category: string;
-  themes: { title: string; icon: any }[];
+  themes: { title: string; emoji: string }[];
 }
 
 export const themeData: Theme[] = [
   {
-    category: 'プログラミング',
+    category: "プログラミング",
     themes: [
-      { title: 'JavaScript', icon: FaBrandsSquareJs },
-      { title: 'Python', icon: FaBrandsPython },
-      { title: 'Ruby', icon: SiRuby },
-      { title: 'Java', icon: FaBrandsJava },
-      { title: 'C++', icon: SiCplusplus },
-      { title: 'その他のプログラミング言語', icon: FaSolidCode },
+      { title: "JavaScript", emoji: "💻" },
+      { title: "Python", emoji: "🐍" },
+      { title: "Ruby", emoji: "💎" },
+      { title: "Java", emoji: "☕" },
+      { title: "C++", emoji: "🔧" },
+      { title: "その他のプログラミング言語", emoji: "🖥️" },
     ],
   },
   {
-    category: 'デザイン',
+    category: "デザイン",
     themes: [
-      { title: 'UI/UX', icon: ImUsers },
-      { title: 'グラフィックデザイン', icon: FaSolidPaintbrush },
-      { title: 'Webデザイン', icon: FaSolidGlobe },
-      { title: '動画編集', icon: BiSolidCameraMovie },
+      { title: "UI/UX", emoji: "🎨" },
+      { title: "グラフィックデザイン", emoji: "🖌️" },
+      { title: "Webデザイン", emoji: "🌐" },
+      { title: "アニメーション", emoji: "🎞️" },
     ],
   },
   {
-    category: '資格試験',
+    category: "資格試験",
     themes: [
-      { title: 'TOEIC', icon: FaSolidGraduationCap },
-      { title: 'ITパスポート', icon: FaSolidLock },
-      { title: '簿記', icon: AiFillAccountBook },
-      { title: '公務員試験', icon: FaSolidSchool },
-      { title: 'その他の資格試験', icon: FaSolidGraduationCap },
+      { title: "TOEIC", emoji: "📚" },
+      { title: "ITパスポート", emoji: "💼" },
+      { title: "簿記", emoji: "📊" },
+      { title: "公務員試験", emoji: "🏛️" },
+      { title: "その他の資格試験", emoji: "🎓" },
     ],
   },
   {
-    category: '読書',
+    category: "読書",
     themes: [
-      { title: '小説', icon: FaSolidBook },
-      { title: 'ビジネス書', icon: FaSolidChartLine },
-      { title: '自己啓発', icon: FaSolidLightbulb },
-      { title: '専門書', icon: ImBook },
+      { title: "小説", emoji: "📖" },
+      { title: "ビジネス書", emoji: "📈" },
+      { title: "自己啓発", emoji: "💡" },
+      { title: "専門書", emoji: "📚" },
     ],
   },
   {
-    category: '学生向け',
+    category: "学生向け",
     themes: [
-      { title: '数学', icon: BiRegularMath },
-      { title: '物理', icon: FaSolidChalkboardUser },
-      { title: '化学', icon: FaSolidAtom },
-      { title: '英語', icon: FaSolidComment },
-      { title: '歴史', icon: FaSolidChalkboardUser },
+      { title: "数学", emoji: "➗" },
+      { title: "物理", emoji: "🔬" },
+      { title: "化学", emoji: "⚗️" },
+      { title: "英語", emoji: "🗣️" },
+      { title: "歴史", emoji: "🏺" },
     ],
   },
   {
-    category: 'ビジネス',
+    category: "ビジネス",
     themes: [
-      { title: 'マーケティング', icon: FaSolidChartLine },
-      { title: 'プロジェクト管理', icon: AiFillProject },
-      { title: '起業', icon: FaSolidRocket },
-      { title: 'リーダーシップ', icon: FaSolidUserTie },
+      { title: "マーケティング", emoji: "📊" },
+      { title: "プロジェクト管理", emoji: "📅" },
+      { title: "起業", emoji: "🚀" },
+      { title: "リーダーシップ", emoji: "👔" },
     ],
   },
   {
-    category: 'ライフスキル',
+    category: "ライフスキル",
     themes: [
-      { title: 'タイムマネジメント', icon: FaSolidClock },
-      { title: 'コミュニケーション', icon: FaSolidComments },
-      { title: 'プレゼンテーション', icon: BiSolidSlideshow },
-      { title: 'クリティカルシンキング', icon: FaSolidLightbulb },
+      { title: "タイムマネジメント", emoji: "⏰" },
+      { title: "コミュニケーション", emoji: "💬" },
+      { title: "プレゼンテーション", emoji: "📢" },
+      { title: "クリティカルシンキング", emoji: "🧠" },
     ],
   },
 ];
