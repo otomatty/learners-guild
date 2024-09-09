@@ -8,19 +8,25 @@ import Schedule from "./components/Schedule/Schedule";
 import FAQ from "./components/FAQ/FAQ";
 import EventReport from "./components/EventReport/EventReport";
 import Flow from "./components/Flow/Flow";
+import MainVisual from "./components/MainVisual/MainVisual"; // 新しいインポート
 
 const HomePage: Component = () => {
   return (
     <HomePageWrapper>
-      <h1>大船渡もくもく会へようこそ</h1>
-
+      <MainVisual /> {/* 新しいメインビジュアルセクション */}
       <Features />
       <LearningThemes />
       <RecommendedFor />
       <Flow />
       <EventSectionWrapper>
-        <EventTime />
-        <Schedule />
+        <div>
+          <EventTime />
+          <Schedule />
+        </div>
+        <p>
+          詳しい開催情報は<a href="/schedule">スケジュールページ</a>
+          をご覧ください。
+        </p>
       </EventSectionWrapper>
       <FAQ />
       <EventReport />

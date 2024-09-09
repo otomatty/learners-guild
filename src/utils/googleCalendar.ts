@@ -131,3 +131,29 @@ export function formatTimeRange(start: string, end: string): string {
   });
   return `${startTime}~${endTime}`;
 }
+
+// 日付と曜日をフォーマットする関数
+export function formatDateAndDay(dateString: string): {
+  date: string;
+  day: string;
+} {
+  const date = new Date(dateString);
+  const dateOptions: Intl.DateTimeFormatOptions = {
+    month: "numeric",
+    day: "numeric",
+  };
+  const dayOptions: Intl.DateTimeFormatOptions = {
+    weekday: "short",
+  };
+  const formattedDate = date.toLocaleDateString("ja-JP", dateOptions);
+  const formattedDay = date
+    .toLocaleDateString("ja-JP", dayOptions)
+    .replace("曜日", "");
+  return { date: formattedDate, day: formattedDay };
+}
+
+// 年を取得する関数
+export function getYear(dateString: string): string {
+  const date = new Date(dateString);
+  return date.getFullYear().toString();
+}

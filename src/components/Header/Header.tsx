@@ -21,7 +21,7 @@ const Header: Component = () => {
         <Nav>
           <A href="/schedule">スケジュール</A>
           <A href="/faq">よくある質問</A>
-          <A href="/event-report">イベントレポート</A>
+          <A href="/reports">イベントレポート</A>
           <ButtonContainer>
             <Button onClick={() => navigate("/contact")} variant="secondary">
               お問い合わせ

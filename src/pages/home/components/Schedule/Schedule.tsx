@@ -1,4 +1,5 @@
 import { Component, createSignal, createEffect } from "solid-js";
+import { A } from "@solidjs/router";
 import { ScheduleWrapper, EventCard } from "./Schedule.styled";
 import {
   CalendarEvent,
@@ -8,6 +9,7 @@ import {
   formatTimeRange, // formatTimeRangeをインポート
 } from "../../../../utils/googleCalendar";
 import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
+import TooltipWithLink from "../../../../components/TooltipWithLink/TooltipWithLink"; // 新しいインポート
 
 const Schedule: Component = () => {
   const [event, setEvent] = createSignal<CalendarEvent | null>(null);
@@ -39,13 +41,15 @@ const Schedule: Component = () => {
             <p>
               場所:{" "}
               {event()!.location ? (
-                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event()!.location || "")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {getLocationName(event()!.location || "")}
-                </a>
+                <TooltipWithLink content="マップを表示します">
+                  <A
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event()!.location || "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {getLocationName(event()!.location || "")}
+                  </A>
+                </TooltipWithLink>
               ) : (
                 "未定"
               )}
@@ -55,10 +59,6 @@ const Schedule: Component = () => {
           <p>次のイベントはありません。</p>
         )}
       </div>
-      <p>
-        詳しい開催情報は<a href="/schedule">スケジュールページ</a>
-        をご覧ください。
-      </p>
     </ScheduleWrapper>
   );
 };

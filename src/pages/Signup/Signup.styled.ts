@@ -1,11 +1,12 @@
 import { styled } from "solid-styled-components";
 
 export const SignupWrapper = styled("section")`
-  max-width: 1200px;
-  margin: 4rem auto;
+  max-width: 1000px;
+  margin: 2rem auto;
   padding: 2rem;
-  background-color: #f9f9f9;
+  box-sizing: border-box;
   border-radius: 8px;
+  height: 100%;
 `;
 
 export const SignupInner = styled("div")`
@@ -23,24 +24,13 @@ export const Form = styled("form")`
 `;
 
 export const FormGroup = styled("div")`
-  margin: 0 auto 15px auto;
+  margin-bottom: 1.5rem;
 `;
 
 export const Label = styled("label")`
-  margin-bottom: 5px;
+  display: block;
+  margin-bottom: 0.5rem;
   font-weight: bold;
-
-  .required {
-    color: red;
-    font-size: 12px;
-    margin-left: 5px;
-  }
-
-  .optional {
-    color: gray;
-    font-size: 12px;
-    margin-left: 5px;
-  }
 `;
 
 export const Input = styled("input")`
@@ -86,7 +76,6 @@ export const ButtonGroup = styled("div")`
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 15px;
 `;
 
 export const ProgressBar = styled("div")`
@@ -94,7 +83,7 @@ export const ProgressBar = styled("div")`
   justify-content: center;
   align-items: flex-end;
   gap: 1rem;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 `;
 
 export const ProgressStep = styled("div")<{
@@ -141,53 +130,4 @@ export const TextArea = styled("textarea")`
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
-`;
-
-export const CardsContainer = styled("div")`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-`;
-
-export const Card = styled("div")`
-  max-width: 23%;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  img {
-    max-width: 100%;
-  }
-`;
-
-export const CardTitle = styled("h3")`
-  margin: 0;
-  font-size: 1.2rem;
-  color: #333;
-`;
-
-export const CardDate = styled("p")`
-  margin: 8px 0;
-  font-size: 1rem;
-  color: #666;
-`;
-
-export const CardButton = styled("button")`
-  padding: 8px 16px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #0056b3;
-  }
 `;

@@ -2,11 +2,11 @@ import { styled } from "solid-styled-components";
 
 export const ContactWrapper = styled("div")`
   max-width: 600px;
-  margin: auto;
+  margin: 4rem auto;
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  border-radius: 0.5rem;
 `;
 
 export const Form = styled("form")`

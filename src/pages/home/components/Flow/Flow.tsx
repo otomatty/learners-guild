@@ -12,7 +12,7 @@ import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 const Flow: Component = () => {
   return (
     <FlowWrapper>
-      <SectionTitle title="もくもく会の流れ" />
+      <SectionTitle title="内容を見てみましょう" />
       <FlowList>
         <FlowCard>
           <CardNumber>1</CardNumber>

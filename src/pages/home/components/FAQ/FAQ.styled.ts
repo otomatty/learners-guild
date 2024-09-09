@@ -3,7 +3,6 @@ import { styled } from "solid-styled-components";
 export const FAQWrapper = styled("section")`
   margin-top: 2rem;
   padding: 2rem;
-  background-color: #f9f9f9;
   border-radius: 8px;
 
   h2 {

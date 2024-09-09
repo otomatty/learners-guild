@@ -2,15 +2,16 @@ import { styled } from "solid-styled-components";
 
 export const RecommendedForWrapper = styled("section")`
   padding: 2rem;
-  background-color: #f9f9f9;
   border-radius: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 2rem;
 
   ul {
+    width: calc(50% - 1rem);
     list-style-type: none;
-    padding: 16px;
+    padding: 1rem;
+    box-sizing: border-box;
     background-color: #ffffff; /* 背景色を白に設定 */
-    border-radius: 8px; /* 角を丸くする */
+    border-radius: 0.5rem; /* 角を丸くする */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影を追加 */
 
     li {

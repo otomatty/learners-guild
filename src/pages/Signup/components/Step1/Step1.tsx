@@ -1,6 +1,5 @@
-import { createSignal, createEffect } from "solid-js";
-import { FormData } from "../../../types/formTypes";
-import { FormGroup, Label, Input } from "../Signup.styled";
+import { FormGroup, Label, Input } from "./Step1.styled";
+import { FormData } from "../../../../types/formTypes";
 
 interface StepProps {
   formData: FormData;
@@ -9,29 +8,22 @@ interface StepProps {
 }
 
 const Step1 = ({ formData, setFormData, setIsStepValid }: StepProps) => {
-  const [name, setName] = createSignal(formData.name);
-
   const handleChange = (e: Event) => {
     const target = e.target as HTMLInputElement;
-    setName(target.value);
-    setFormData({ ...formData, name: target.value });
+    setFormData({ ...formData, [target.name]: target.value });
+    setIsStepValid(target.value.trim() !== "");
   };
-
-  createEffect(() => {
-    setIsStepValid(!!name());
-  });
 
   return (
     <FormGroup>
       <Label for="name">
-        お名前 <span class="required">必須</span>
+        名前<span class="required">必須</span>
       </Label>
       <Input
         type="text"
         id="name"
         name="name"
-        placeholder="お名前を入力してください"
-        value={name()}
+        value={formData.name}
         onInput={handleChange}
         required
       />

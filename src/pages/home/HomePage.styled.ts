@@ -8,7 +8,6 @@ export const HomePageWrapper = styled("div")`
   h1 {
     color: #333;
     font-size: 2.5rem;
-    margin-bottom: 1rem;
     text-align: center;
   }
 
@@ -17,22 +16,14 @@ export const HomePageWrapper = styled("div")`
     text-align: center;
     margin-bottom: 2rem;
   }
-
-  section {
-    margin-bottom: 2rem;
-  }
 `;
 
 export const EventSectionWrapper = styled("div")`
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 2rem;
   padding: 2rem;
-  background-color: #f9f9f9;
   border-radius: 8px;
-
   > div {
-    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
   }
 `;

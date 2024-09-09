@@ -1,6 +1,6 @@
 import { createSignal, createEffect } from "solid-js";
-import { FormData } from "../../../types/formTypes";
-import { FormGroup, Label, Input } from "../Signup.styled";
+import { FormData } from "../../../../types/formTypes";
+import { FormGroup, Label, Input } from "./Step3.styled";
 
 interface StepProps {
   formData: FormData;
@@ -15,6 +15,7 @@ const Step3 = ({ formData, setFormData, setIsStepValid }: StepProps) => {
     const target = e.target as HTMLInputElement;
     setPhone(target.value);
     setFormData({ ...formData, phone: target.value });
+    setIsStepValid(target.value.trim() !== "");
   };
 
   createEffect(() => {

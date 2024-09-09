@@ -15,6 +15,8 @@ export const AccordionItem = styled("div")`
 `;
 
 export const AccordionHeader = styled("button")`
+  font-size: 1.2rem;
+
   width: 100%;
   padding: 15px;
   background-color: #f5f5f5;
@@ -37,7 +39,10 @@ export const AccordionHeader = styled("button")`
 `;
 
 export const AccordionContent = styled("div")<{ isOpen: boolean }>`
-  padding: ${(props) => (props.isOpen ? "15px" : "0 15px")};
+  font-size: 1.2rem;
+
+  text-align: left;
+  padding: ${(props) => (props.isOpen ? " 3rem 1rem" : "0 1rem")};
   max-height: ${(props) => (props.isOpen ? "1000px" : "0")};
   overflow: hidden;
   transition: all 0.3s ease-in-out;

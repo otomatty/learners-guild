@@ -1,36 +1,36 @@
-import { Component } from "solid-js";
+import { Component, createSignal } from "solid-js";
 import {
   LearningThemesWrapper,
   ThemesGrid,
   ThemeCard,
+  LoadMoreButton,
 } from "./LearningThemes.styled";
 import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
+import { themeData } from "../../../../data/themeData";
 
 const LearningThemes: Component = () => {
-  const themes = [
-    { title: "プログラミング基礎", emoji: "💻" },
-    { title: "Webデザイン", emoji: "🎨" },
-    { title: "生成AIの活用", emoji: "🤖" },
-    { title: "データサイエンス", emoji: "📊" },
-    { title: "機械学習", emoji: "🧠" },
-    { title: "クラウドコンピューティング", emoji: "☁️" },
-    { title: "モバイルアプリ開発", emoji: "📱" },
-    { title: "サイバーセキュリティ", emoji: "🔒" },
-    { title: "ゲーム開発", emoji: "🎮" },
-    { title: "IoT技術", emoji: "🌐" },
-  ];
+  const [visibleCount, setVisibleCount] = createSignal(10); // 初期表示数を6に設定
+
+  const themes = themeData.flatMap((category) => category.themes);
+
+  const loadMoreThemes = () => {
+    setVisibleCount(visibleCount() + 10); // クリック時に6つずつ追加表示
+  };
 
   return (
     <LearningThemesWrapper>
       <SectionTitle title="取り組むテーマは無限、あなたは何をしますか？" />
       <ThemesGrid>
-        {themes.map((theme) => (
+        {themes.slice(0, visibleCount()).map((theme) => (
           <ThemeCard>
-            <span>{theme.emoji}</span>
+            <span>{theme.icon}</span>
             <p>{theme.title}</p>
           </ThemeCard>
         ))}
       </ThemesGrid>
+      {visibleCount() < themes.length && (
+        <LoadMoreButton onClick={loadMoreThemes}>もっと見る</LoadMoreButton>
+      )}
     </LearningThemesWrapper>
   );
 };

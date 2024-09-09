@@ -1,79 +1,94 @@
-import { Component, createResource, onMount } from 'solid-js';
+import { Component, createResource, createSignal } from "solid-js";
+import { A } from "@solidjs/router";
 import {
   CardSectionWrapper,
-  SliderTrack,
-  SliderList,
   EventCard,
+  EventDateTime,
+  EventDateWrapper,
   EventImage,
+  EventDetails,
   EventTitle,
   EventDate,
+  EventDay,
   EventTime,
   EventLocation,
-  SliderControl,
-} from './CardSection.styled';
+  EventYear,
+  ShowMoreButton,
+} from "./CardSection.styled";
 import {
   fetchUpcomingEvents,
   CalendarEvent,
   getLocationImage,
   getLocationName,
   formatTimeRange,
-} from '../../../../utils/googleCalendar';
+  formatDateAndDay,
+  getYear,
+} from "../../../../utils/googleCalendar";
+import TooltipWithLink from "../../../../components/TooltipWithLink/TooltipWithLink"; // 新しいインポート
 
 const CardSection: Component = () => {
   const [events] = createResource(fetchUpcomingEvents);
-  let sliderRef: HTMLDivElement | undefined;
+  const [showAll, setShowAll] = createSignal(false);
 
-  onMount(() => {
-    console.log('Upcoming events:', events());
-    if (sliderRef) {
-      initializeSlider(sliderRef);
-    }
-  });
-
-  const initializeSlider = (sliderElement: HTMLDivElement) => {
-    // ここにスライダーの初期化ロジックを実装します
-    // 例: 左右の矢印ボタンのイベントリスナーを設定するなど
-  };
+  const toggleShowAll = () => setShowAll(!showAll());
 
   return (
     <CardSectionWrapper>
       {events() ? (
-        <section
-          class="slider"
-          aria-labelledby="carousel-heading"
-          ref={sliderRef}
-        >
-          <SliderTrack class="splide__track">
-            <SliderList class="splide__list">
-              {events()!.map((event: CalendarEvent) => (
-                <EventCard class="splide__slide">
+        <ul class={showAll() ? "expanded" : "collapsed"}>
+          {events()!
+            .slice(0, showAll() ? events()!.length : 3)
+            .map((event: CalendarEvent, index, array) => {
+              const { date, day } = formatDateAndDay(event.start.dateTime);
+              const isLastVisible = !showAll() && index === array.length - 1;
+              return (
+                <EventCard as="li" class={isLastVisible ? "last-visible" : ""}>
+                  <EventDateTime>
+                    <EventYear>{getYear(event.start.dateTime)}</EventYear>
+                    <EventDateWrapper>
+                      <EventDate>{date}</EventDate>
+                      <EventDay>{day}</EventDay>
+                    </EventDateWrapper>
+                    <EventTime>
+                      {formatTimeRange(
+                        event.start.dateTime,
+                        event.end.dateTime
+                      )}
+                    </EventTime>
+                  </EventDateTime>
                   <EventImage
-                    src={getLocationImage(event.location || '')}
+                    src={getLocationImage(event.location || "")}
                     alt={event.summary}
                   />
-                  <EventTitle>{event.summary}</EventTitle>
-                  <EventDate>
-                    {new Date(event.start.dateTime).toLocaleDateString()}
-                  </EventDate>
-                  <EventTime>
-                    {formatTimeRange(event.start.dateTime, event.end.dateTime)}
-                  </EventTime>
-                  <EventLocation>
-                    {getLocationName(event.location || '')}
-                  </EventLocation>
+                  <EventDetails>
+                    <EventTitle>{event.summary}</EventTitle>
+                    <EventLocation>
+                      {event.location ? (
+                        <TooltipWithLink content="マップを表示します">
+                          <A
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location || "")}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {getLocationName(event.location || "")}
+                          </A>
+                        </TooltipWithLink>
+                      ) : (
+                        "未定"
+                      )}
+                    </EventLocation>
+                  </EventDetails>
                 </EventCard>
-              ))}
-            </SliderList>
-          </SliderTrack>
-          <SliderControl class="slider__control slider__control--prev">
-            前へ
-          </SliderControl>
-          <SliderControl class="slider__control slider__control--next">
-            次へ
-          </SliderControl>
-        </section>
+              );
+            })}
+        </ul>
       ) : (
         <p>直近1ヶ月のイベントはありません。</p>
+      )}
+      {events() && events()!.length > 3 && (
+        <ShowMoreButton onClick={toggleShowAll}>
+          {showAll() ? "表示を減らす" : "もっと見る"}
+        </ShowMoreButton>
       )}
     </CardSectionWrapper>
   );

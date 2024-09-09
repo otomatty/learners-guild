@@ -8,6 +8,7 @@ import {
 } from "./Accordion.styled";
 
 export interface AccordionItemProps {
+  category: string;
   title: string;
   content: string;
 }

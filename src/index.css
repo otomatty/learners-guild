@@ -28,16 +28,23 @@
 
 @font-face {
   font-family: "Noto Sans JP";
-  src: url("/fonts/NotoSansJP-Regular.otf") format("opentype");
+  src: url("/fonts/NotoSansJP-Regular.ttf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Noto Sans JP";
-  src: url("/fonts/NotoSansJP-Bold.otf") format("opentype");
+  src: url("/fonts/NotoSansJP-Bold.ttf") format("opentype");
   font-weight: bold;
   font-style: normal;
+}
+
+/* 追加: 全ての要素に対してbox-sizing: border-boxを指定 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
@@ -57,7 +64,7 @@ code {
 
 @font-face {
   font-family: "Noto Color Emoji";
-  src: url("/fonts/NotoColorEmoji.ttf") format("truetype");
+  src: url("/fonts/NotoColorEmoji-Regular.ttf") format("truetype");
 }
 
 .emoji {

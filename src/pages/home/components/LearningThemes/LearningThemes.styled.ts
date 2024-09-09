@@ -2,9 +2,8 @@ import { styled } from "solid-styled-components";
 
 export const LearningThemesWrapper = styled("section")`
   padding: 2rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  margin-bottom: 16px;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
 
   h3 {
     margin-bottom: 16px;
@@ -15,7 +14,7 @@ export const LearningThemesWrapper = styled("section")`
 export const ThemesGrid = styled("div")`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 16px;
+  gap: 1rem;
 
   @media (min-width: 1024px) {
     grid-template-columns: repeat(5, 1fr); /* PC: 5カラム */
@@ -52,5 +51,22 @@ export const ThemeCard = styled("div")`
 
   p {
     margin: 0;
+  }
+`;
+
+export const LoadMoreButton = styled("button")`
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
   }
 `;

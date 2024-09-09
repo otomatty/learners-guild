@@ -2,17 +2,20 @@ import { styled } from "solid-styled-components";
 
 export const FlowWrapper = styled("section")`
   padding: 2rem;
-  background-color: #f9f9f9;
   border-radius: 8px;
+  margin-bottom: 2rem;
 `;
 
-export const FlowList = styled("div")`
+export const FlowList = styled("ol")`
+  width: 40%;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  list-style: none;
 `;
 
-export const FlowCard = styled("div")`
+export const FlowCard = styled("li")`
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

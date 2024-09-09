@@ -1,6 +1,6 @@
 import { createSignal, createEffect } from "solid-js";
-import { FormData } from "../../../types/formTypes";
-import { FormGroup, Label, Select, Input } from "../Signup.styled";
+import { FormData } from "../../../../types/formTypes";
+import { FormGroup, Label, Select, Input } from "./Step4.styled";
 
 interface StepProps {
   formData: FormData;
