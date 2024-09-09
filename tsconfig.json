@@ -5,6 +5,7 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "types": ["vite/client", "storybook-solidjs"]
+    "types": ["vite/client", "storybook-solidjs"],
+    "forceConsistentCasingInFileNames": true
   }
 }
