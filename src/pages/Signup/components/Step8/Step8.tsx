@@ -57,10 +57,10 @@ const Step8 = ({ formData, setFormData, setIsStepValid }: StepProps) => {
           <CardsContainer>
             {category.themes.map((item) => (
               <Card
-                class={selectedThemes().includes(item) ? "selected" : ""}
-                onClick={() => handleThemeChange(item)}
+                class={selectedThemes().includes(item.title) ? "selected" : ""}
+                onClick={() => handleThemeChange(item.title)}
               >
-                {item}
+                {item.title}
               </Card>
             ))}
           </CardsContainer>
